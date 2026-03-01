@@ -51,7 +51,7 @@ class InventarioJugador:
                  continue
              total_usos += objeto["usos"]
 
-             return total_usos
+        return total_usos
         
     # metodo estrategia sobre carga, que devuelve la cat que tiene 
     # mas energia * usos
