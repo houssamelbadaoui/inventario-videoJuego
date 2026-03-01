@@ -52,3 +52,31 @@ class InventarioJugador:
              total_usos += objeto["usos"]
 
              return total_usos
+        
+    # metodo estrategia sobre carga, que devuelve la cat que tiene 
+    # mas energia * usos
+    def estrategiaSobreCarga(self):
+
+        # Dicc para almacenar la energia total acumulada por cat
+        energia_por_categoria = {}
+
+        for objeto in self.objetos:
+            categoria = objeto["categoria"]
+            # calcular energia total de cada objeto
+            energia_total = objeto["usos"] * objeto["energia"]
+
+            # añadimos las cat al dicc y inicia con 0
+            if categoria not in energia_por_categoria:
+                energia_por_categoria[categoria] = 0
+
+            energia_por_categoria[categoria] += energia_total
+
+        # si el invintario esta vacio, devolvemos lista vacia
+        if not energia_por_categoria:
+            return []
+        
+        # encontramos la cat con mayor energia total
+        categoria_max = max(energia_por_categoria, key=energia_por_categoria.get)
+
+        # devolver todos los obj que pertenezcan a la cat con mayor energia total
+        return [obj for obj in self.objetos if obj["categoria"] == categoria_max]
