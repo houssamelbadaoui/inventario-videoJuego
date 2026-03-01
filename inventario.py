@@ -17,3 +17,19 @@ class InventarioJugador:
             if objeto["energia"] <= max_energia:
                 resultados.append(objeto)
         return resultados
+    
+    # metodo para usar un objeto
+    def usarObjeto(self, nombre, elemento=None):
+        for objeto in self.objetos:
+            # encontrar el objeto que lo queremos a usar
+            if objeto["nombre"] == nombre:
+
+                if elemento is not None and objeto["elemento"] != elemento:
+                    continue
+
+                if objeto["usos"] > 1:
+                    objeto["usos"] -= 1
+                else:
+                    self.objetos.remove(objeto)
+                return True
+        return False
