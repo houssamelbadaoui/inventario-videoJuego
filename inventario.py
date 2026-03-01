@@ -8,4 +8,12 @@ class InventarioJugador:
             # guardar lo en una lista
             self.objetos = json.load(file)
 
-    
+    # buscarPorEnergia, buscar objetos cuya energia por uso sea menor o igual
+    # al numero dado
+    def buscarPorEnergia(self, max_energia):
+        resultados = []
+
+        for objeto in self.objetos:
+            if objeto["energia"] <= max_energia:
+                resultados.append(objeto)
+        return resultados
