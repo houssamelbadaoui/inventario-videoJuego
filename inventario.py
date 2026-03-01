@@ -23,7 +23,7 @@ class InventarioJugador:
         for objeto in self.objetos:
             # encontrar el objeto que lo queremos a usar
             if objeto["nombre"] == nombre:
-
+                # if the user specify an element we should find it
                 if elemento is not None and objeto["elemento"] != elemento:
                     continue
 
@@ -33,3 +33,22 @@ class InventarioJugador:
                     self.objetos.remove(objeto)
                 return True
         return False
+    
+    # metodo para consultar usos de un elemento, categoria, o objeto especifico
+    def consultarUsos(self, nombre=None, categoria=None, elemento=None):
+
+        total_usos = 0
+
+        for objeto in self.objetos:
+             
+             if nombre is not None and objeto["nombre"] != nombre:
+                 continue
+             
+             if categoria is not None and objeto["categoria"] != categoria:
+                 continue
+             
+             if elemento is not None and objeto["elemento"] != elemento:
+                 continue
+             total_usos += objeto["usos"]
+
+             return total_usos
