@@ -1,0 +1,34 @@
+[
+  {
+    "nombre": "Poción pequeña",
+    "categoria": "recuperacion",
+    "contenedor": "unidad",
+    "usos": 3,
+    "elemento": null,
+    "energia": 5
+  },
+  {
+    "nombre": "Poción grande",
+    "categoria": "recuperacion",
+    "contenedor": "frasco",
+    "usos": 2,
+    "elemento": null,
+    "energia": 12
+  },
+  {
+    "nombre": "Antídoto",
+    "categoria": "cura",
+    "contenedor": "unidad",
+    "usos": 1,
+    "elemento": null,
+    "energia": 4
+  },
+  {
+    "nombre": "Bomba eléctrica",
+    "categoria": "ataque",
+    "contenedor": "unidad",
+    "usos": 1,
+    "elemento": "electricidad",
+    "energia": 20
+  }
+]
