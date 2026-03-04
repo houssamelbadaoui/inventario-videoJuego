@@ -13,7 +13,7 @@ class ObjetoInventario:
 
 
 
-        
+
 class InventarioJugador:
 
     # constructor
@@ -21,7 +21,20 @@ class InventarioJugador:
         # leer el archivo.json
         with open(archivo, "r", encoding="utf-8") as file:
             # guardar lo en una lista
-            self.objetos = json.load(file)
+            datos = json.load(file)
+
+            self.objetos = []
+
+            for item in datos:
+                objeto = ObjetoInventario(
+                    item["nombre"],
+                    item["categoria"],
+                    item["contenedor"],
+                    item["usos"],
+                    item["elemento"],
+                    item["energia"]
+                )
+                self.objetos.append(objeto)
 
     # buscarPorEnergia, buscar objetos cuya energia por uso sea menor o igual
     # al numero dado
