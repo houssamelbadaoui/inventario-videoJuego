@@ -11,6 +11,14 @@ class ObjetoInventario:
         self.elemento = elemento
         self.energia = energia
 
+    def __str__(self):
+        return f"nombre: {self.nombre}, categoria: {self.categoria}, contenedor: {self.contenedor}, usos: {self.usos}, elemento: {self.elemento}, energia: {self.energia}."
+    
+    def __repr__(self):
+        return self.__str__()
+
+
+
 
 
 
@@ -42,7 +50,7 @@ class InventarioJugador:
         resultados = []
 
         for objeto in self.objetos:
-            if objeto["energia"] <= max_energia:
+            if objeto.energia <= max_energia:
                 resultados.append(objeto)
         return resultados
     
@@ -50,13 +58,13 @@ class InventarioJugador:
     def usarObjeto(self, nombre, elemento=None):
         for objeto in self.objetos:
             # encontrar el objeto que lo queremos a usar
-            if objeto["nombre"] == nombre:
+            if objeto.nombre == nombre:
                 # if the user specify an element we should find it
-                if elemento is not None and objeto["elemento"] != elemento:
+                if elemento is not None and objeto.elemento != elemento:
                     continue
 
-                if objeto["usos"] > 1:
-                    objeto["usos"] -= 1
+                if objeto.usos > 1:
+                    objeto.usos -= 1
                 else:
                     self.objetos.remove(objeto)
                 return True
@@ -69,15 +77,15 @@ class InventarioJugador:
 
         for objeto in self.objetos:
              
-             if nombre is not None and objeto["nombre"] != nombre:
+             if nombre is not None and objeto.nombre != nombre:
                  continue
              
-             if categoria is not None and objeto["categoria"] != categoria:
+             if categoria is not None and objeto.categoria != categoria:
                  continue
              
-             if elemento is not None and objeto["elemento"] != elemento:
+             if elemento is not None and objeto.elemento != elemento:
                  continue
-             total_usos += objeto["usos"]
+             total_usos += objeto.usos
 
         return total_usos
         
@@ -89,9 +97,9 @@ class InventarioJugador:
         energia_por_categoria = {}
 
         for objeto in self.objetos:
-            categoria = objeto["categoria"]
+            categoria = objeto.categoria
             # calcular energia total de cada objeto
-            energia_total = objeto["usos"] * objeto["energia"]
+            energia_total = objeto.usos * objeto.energia
 
             # añadimos las cat al dicc y inicia con 0
             if categoria not in energia_por_categoria:
@@ -107,4 +115,4 @@ class InventarioJugador:
         categoria_max = max(energia_por_categoria, key=energia_por_categoria.get)
 
         # devolver todos los obj que pertenezcan a la cat con mayor energia total
-        return [obj for obj in self.objetos if obj["categoria"] == categoria_max]
+        return [obj for obj in self.objetos if obj.categoria == categoria_max]
