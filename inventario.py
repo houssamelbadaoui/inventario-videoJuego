@@ -1,4 +1,19 @@
 import json
+class ObjetoInventario:
+
+    # Los datos leídos desde el JSON deberán transformarse en objetos de esta clase 
+    # antes de almacenarse en el inventario.
+    def __init__(self, nombre, categoria, contenedor, usos, elemento, energia):
+        self.nombre = nombre
+        self.categoria = categoria
+        self.contenedor = contenedor
+        self.usos = usos
+        self.elemento = elemento
+        self.energia = energia
+
+
+
+        
 class InventarioJugador:
 
     # constructor
